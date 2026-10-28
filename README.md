@@ -17,7 +17,48 @@ STEP-5: Display the cipher text obtained above.
 
 ## PROGRAM:
 
+
+```
+#include <stdio.h> 
+#include <string.h> 
+void encrypt(char text[], int key) { 
+ for (int i = 0; text[i] != '\0'; i++) { 
+ if (text[i] >= 'A' && text[i] <= 'Z') 
+ text[i] = (text[i] - 'A' + key) % 26 + 'A'; 
+ else if (text[i] >= 'a' && text[i] <= 'z') 
+ text[i] = (text[i] - 'a' + key) % 26 + 'a'; 
+ } 
+} 
+void decrypt(char text[], int key) { 
+ for (int i = 0; text[i] != '\0'; i++) { 
+ if (text[i] >= 'A' && text[i] <= 'Z') 
+ text[i] = (text[i] - 'A' - key + 26) % 26 + 'A'; 
+ else if (text[i] >= 'a' && text[i] <= 'z') 
+ text[i] = (text[i] - 'a' - key + 26) % 26 + 'a'; 
+ } 
+} 
+int main() { 
+ char text[100]; 
+ int key; 
+ printf("Enter text: "); 
+ fgets(text, sizeof(text), stdin); 
+ printf("Enter key: "); 
+ scanf("%d", &key); 
+ encrypt(text, key); 
+ printf("Encrypted Text: %s", text); 
+ decrypt(text, key); 
+ printf("Decrypted Text: %s", text); 
+ return 0; 
+}
+
+```
+
 ## OUTPUT:
+
+
+<img width="640" height="303" alt="image" src="https://github.com/user-attachments/assets/95f3e462-3d82-4299-b840-a9aa19010a9c" />
+
+
 
 ## RESULT :
  Thus the implementation of ceasar cipher had been executed successfully.
